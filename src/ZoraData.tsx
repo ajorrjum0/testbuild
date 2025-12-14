@@ -77,17 +77,17 @@ const ZoraData: React.FC<{ inline?: boolean }> = ({ inline = false }) => {
   };
 
   return inline ? (
-    <span className="text-cyan-400 font-semibold">
+    <span className="text-white font-semibold">
 {formatFdv(fdv)}
       {source && source !== "Dexscreener" ? <span className="text-sm text-slate-400 ml-2">(source: {source})</span> : null}
     </span>
   ) : (
     <div className="text-left text-white mt-6">
       <h3 className="text-lg text-slate-400">
-        FDV: <span className="text-cyan-400 font-semibold">{formatFdv(fdv)}</span>
+        FDV: <span className="text-white font-semibold">{formatFdv(fdv)}</span>
       </h3>
       {source && source !== "Dexscreener" ? (
-        <p className="text-sm text-slate-400 mt-1">Source: <span className="text-cyan-300 font-medium">{source}</span></p>
+        <p className="text-sm text-slate-400 mt-1">Source: <span className="text-gray-400 font-medium">{source}</span></p>
       ) : null}
     </div>
   );

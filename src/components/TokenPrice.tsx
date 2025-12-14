@@ -87,14 +87,14 @@ export default function TokenPrice({ className, showPrice = false, showTrend = t
       <div>
         <div className="flex flex-row items-center gap-2 whitespace-nowrap">
           {showPrice ? (
-            <span className="text-2xl font-bold text-cyan-400">$ {formatUSD(price)}</span>
+            <span className="text-2xl font-bold text-white">$ {formatUSD(price)}</span>
           ) : null}
           {showTrend ? (
             <TokenTrendBadge className="text-sm font-bold inline-flex items-center" />
           ) : null}
         </div>
         {priceSource && priceSource !== "Dexscreener" ? (
-          <div className="text-sm text-slate-400">Source: <span className="text-cyan-300 font-medium">{priceSource}</span></div>
+          <div className="text-sm text-slate-400">Source: <span className="text-gray-400 font-medium">{priceSource}</span></div>
         ) : null}
       </div>
     </div>

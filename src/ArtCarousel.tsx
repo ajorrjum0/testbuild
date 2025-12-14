@@ -29,9 +29,8 @@ export function ArtCarousel({ items }: ArtCarouselProps) {
         {items.map((num) => (
           <div
             key={num}
-            className="flex-shrink-0 w-96 group/card relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20"
+            className="flex-shrink-0 w-96 group/card relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl"
           >
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover/card:from-cyan-500/5 group-hover/card:to-purple-500/5 rounded-2xl transition-all duration-500"></div>
             <ClickableImage
               src={`/images/art${num}.png`}
               alt={`Art ${num}`}
@@ -44,7 +43,7 @@ export function ArtCarousel({ items }: ArtCarouselProps) {
 
       <button
         onClick={() => scroll('left')}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-6 z-10 p-3 rounded-full bg-white/10 hover:bg-cyan-500/30 border border-white/20 hover:border-cyan-500/50 transition-all opacity-0 group-hover:opacity-100 duration-300 hover:scale-110"
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-6 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all opacity-0 group-hover:opacity-100 duration-300 hover:scale-110"
         aria-label="Scroll left"
       >
         <ChevronLeft size={24} />
@@ -52,7 +51,7 @@ export function ArtCarousel({ items }: ArtCarouselProps) {
 
       <button
         onClick={() => scroll('right')}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-6 z-10 p-3 rounded-full bg-white/10 hover:bg-cyan-500/30 border border-white/20 hover:border-cyan-500/50 transition-all opacity-0 group-hover:opacity-100 duration-300 hover:scale-110"
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-6 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all opacity-0 group-hover:opacity-100 duration-300 hover:scale-110"
         aria-label="Scroll right"
       >
         <ChevronRight size={24} />

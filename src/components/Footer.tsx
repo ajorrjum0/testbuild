@@ -8,7 +8,7 @@ export function Footer() {
             href="https://x.com/BaseCulture_"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white inline-flex items-center justify-center cursor-pointer transform transition-colors transition-transform duration-300 hover:scale-110 hover:text-cyan-400 active:text-cyan-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+            className="text-white inline-flex items-center justify-center cursor-pointer transform transition-colors transition-transform duration-300 hover:scale-110 hover:text-gray-100 active:text-gray-300 active:scale-95 focus:outline-none focus-ring-0 focus-visible:outline-none"
           >
             <svg
               width="24"
@@ -27,7 +27,7 @@ export function Footer() {
             href="https://www.instagram.com/cultr.fun"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white inline-flex items-center justify-center cursor-pointer transform transition-colors transition-transform duration-300 hover:scale-110 hover:text-cyan-400 active:text-cyan-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+            className="text-white inline-flex items-center justify-center cursor-pointer transform transition-colors transition-transform duration-300 hover:scale-110 hover:text-gray-100 active:text-gray-300 active:scale-95 focus:outline-none focus-ring-0 focus-visible:outline-none"
           >
             <svg
               width="24"

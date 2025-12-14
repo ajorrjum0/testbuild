@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div className="bg-black text-white min-h-screen relative overflow-x-hidden">
-      <div className="fixed inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5 pointer-events-none" />
+      <div className="fixed inset-0 pointer-events-none" />
 
       {/* === HEADER === */}
       <header
@@ -57,7 +57,7 @@ function App() {
       >
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div
-            className="text-2xl font-bold tracking-wider cursor-pointer hover:text-cyan-400 transition-colors"
+            className="text-2xl font-bold tracking-wider cursor-pointer hover:text-gray-300 transition-colors"
             onClick={() => scrollToSection("home")}
           >
             CULTR
@@ -68,7 +68,7 @@ function App() {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`capitalize font-medium transition-all hover:text-cyan-400 ${
+                className={`capitalize font-medium transition-all hover:text-gray-300 ${
                   activeSection === section
                     ? "text-cyan-400"
                     : "text-gray-400"
@@ -80,7 +80,7 @@ function App() {
           </div>
 
           <button
-            className="text-white bg-black/30 p-2 rounded-md hover:bg-black/50 hover:text-cyan-400 active:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 transition-colors"
+            className="text-white bg-black/30 p-2 rounded-md hover:bg-black/50 hover:text-gray-300 active:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white/10 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -116,7 +116,7 @@ function App() {
           className="min-h-screen flex flex-col items-center justify-center px-6 pt-20"
         >
           <div className="relative group">
-            <div className="absolute -inset-1 pointer-events-none bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+            <div className="absolute -inset-1 pointer-events-none rounded-full opacity-0 -z-10"></div>
             <ClickableImage
               src="/logo.png"
               alt="CULTR logo"
@@ -124,7 +124,7 @@ function App() {
             />
           </div>
 
-          <h1 className="mt-8 text-6xl md:text-8xl font-black tracking-tighter bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
+          <h1 className="mt-8 text-6xl md:text-8xl font-black tracking-tighter text-white">
             CULTR
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 mt-4 font-light">
@@ -132,8 +132,8 @@ function App() {
           </p>
 
           <div className="mt-16 w-full max-w-2xl space-y-6">
-            <div className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20">
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300"></div>
+            <div className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 transition-all duration-300 hover:shadow-2xl">
+              <div className="absolute inset-0 pointer-events-none rounded-2xl transition-all duration-300 opacity-0"></div>
               <div className="relative flex justify-between items-start mb-4">
                 <div className="flex flex-col">
                   <div className="flex items-baseline gap-2 whitespace-nowrap">
@@ -148,22 +148,22 @@ function App() {
                   <TokenTrendBadge className="text-base md:text-lg font-bold inline-flex items-center bg-black/40 px-2 py-1 rounded-full" />
                 </div>
               </div>
-                <h2 className="relative text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                <h2 className="relative text-4xl font-bold text-white">
                 <TokenPrice showTrend={false} />
               </h2>
             </div>
 
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold mb-6 text-white">
                 Top Market Cap Art
               </h3>
-              <div className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/5 group-hover:to-pink-500/5 rounded-2xl transition-all duration-300"></div>
-                <ClickableImage
-                  src="/images/top-market.png"
-                  alt="Top Art"
-                  className="relative w-full rounded-xl shadow-2xl transform transition-transform duration-500"
-                />
+                  <div className="group relative rounded-2xl transition-all duration-300">
+                <div className="absolute inset-0 pointer-events-none rounded-2xl transition-all duration-300 opacity-0"></div>
+                    <ClickableImage
+                      src="/images/top-market.png"
+                      alt="Top Art"
+                      className="relative w-full rounded-2xl transform transition-transform duration-500"
+                    />
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ function App() {
           id="art"
           className="min-h-screen flex flex-col items-center justify-center px-6 py-20"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-4 text-center bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-black mb-4 text-center text-white">
             The Future of Base Culture
           </h2>
           <p className="text-gray-400 text-lg mb-16 text-center max-w-2xl">
@@ -191,7 +191,7 @@ function App() {
           id="faq"
           className={`transition-all duration-500 overflow-hidden ${faqVisible ? 'min-h-screen flex flex-col items-center justify-center px-6 py-20 opacity-100' : 'max-h-0 px-6 py-0 opacity-0'}`}
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-16 text-center bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-black mb-16 text-center text-white">
             Frequently Asked Questions
           </h2>
 
@@ -213,7 +213,7 @@ function App() {
             ].map((faq, index) => (
               <details
                 key={index}
-                className="group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10"
+                className="group bg-white/5 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:shadow-xl"
               >
                 <summary className="font-bold text-lg cursor-pointer list-none flex items-center justify-between text-gray-200 group-hover:text-cyan-400 transition-colors">
                   {faq.q}
@@ -235,4 +235,3 @@ function App() {
 }
 
 export default App;
-
