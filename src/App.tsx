@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { ArtCarousel } from "./ArtCarousel";
 import TokenPrice, { TokenTrendBadge } from "./components/TokenPrice";
+import ClickableImage from "./components/ClickableImage";
 import ZoraData from "./ZoraData";
 import Footer from "./components/Footer";
 
@@ -115,8 +116,8 @@ function App() {
           className="min-h-screen flex flex-col items-center justify-center px-6 pt-20"
         >
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-            <img
+            <div className="absolute -inset-1 pointer-events-none bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+            <ClickableImage
               src="/logo.png"
               alt="CULTR logo"
               className="relative w-40 h-40 rounded-full object-cover border-4 border-white/10"
@@ -132,7 +133,7 @@ function App() {
 
           <div className="mt-16 w-full max-w-2xl space-y-6">
             <div className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300"></div>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300"></div>
               <div className="relative flex justify-between items-start mb-4">
                 <div className="flex flex-col">
                   <div className="flex items-baseline gap-2 whitespace-nowrap">
@@ -157,11 +158,11 @@ function App() {
                 Top Market Cap Art
               </h3>
               <div className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/5 group-hover:to-pink-500/5 rounded-2xl transition-all duration-300"></div>
-                <img
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/5 group-hover:to-pink-500/5 rounded-2xl transition-all duration-300"></div>
+                <ClickableImage
                   src="/images/top-market.png"
                   alt="Top Art"
-                  className="relative w-full rounded-xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
+                  className="relative w-full rounded-xl shadow-2xl transform transition-transform duration-500"
                 />
               </div>
             </div>

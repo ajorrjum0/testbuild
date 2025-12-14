@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-const TOKEN_CONTRACT = "0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59";
+const TOKEN_CONTRACT = (import.meta.env.VITE_TOKEN_CONTRACT ?? "").trim();
+
+if (!TOKEN_CONTRACT) {
+  console.warn("VITE_TOKEN_CONTRACT not set — ZoraData will not fetch FDV until a contract is provided.");
+}
 
 const ZoraData: React.FC<{ inline?: boolean }> = ({ inline = false }) => {
   const [fdv, setFdv] = useState<number | null>(null);
   const [source, setSource] = useState<string | null>(null);
-  const [loadingPrice, setLoadingPrice] = useState(true);
   const [prevFdv, setPrevFdv] = useState<number | null>(null);
 
   useEffect(() => {
@@ -13,20 +16,18 @@ const ZoraData: React.FC<{ inline?: boolean }> = ({ inline = false }) => {
 
     const fetchFdv = async () => {
       try {
-        // Only show loading if FDV might change
-        const shouldShowLoading = prevFdv === null; // First load or FDV changed
-        if (shouldShowLoading) {
-          setLoadingPrice(true);
-        }
-
-        // Only add delay if showing loading state
-        if (shouldShowLoading) {
-          await new Promise((resolve) => setTimeout(resolve, 800));
-        }
+        // Immediately fetch and update FDV; no loading state or artificial delays
 
         // Fetch FDV from Dexscreener
-        console.log("Fetching FDV from Dexscreener...");
         try {
+          if (!TOKEN_CONTRACT) {
+            if (mounted) {
+              setFdv(null);
+              setSource(null);
+            }
+            return;
+          }
+
           const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${TOKEN_CONTRACT}`, {
             signal: AbortSignal.timeout(5000),
           });
@@ -40,24 +41,21 @@ const ZoraData: React.FC<{ inline?: boolean }> = ({ inline = false }) => {
               setSource(dexFdv ? "Dexscreener" : null);
               if (changed) {
                 setPrevFdv(dexFdv);
-                setLoadingPrice(false);
               }
             }
-            console.log("Dexscreener FDV:", dexFdv);
           }
         } catch (err) {
           console.error("Dexscreener FDV fetch failed:", err);
           if (mounted) {
             setFdv(null);
             setSource(null);
-            setLoadingPrice(false);
+
           }
         }
       } catch (err) {
         console.error("Error fetching FDV:", err);
         if (mounted) {
           setFdv(null);
-          setLoadingPrice(false);
         }
       }
     };
@@ -80,13 +78,13 @@ const ZoraData: React.FC<{ inline?: boolean }> = ({ inline = false }) => {
 
   return inline ? (
     <span className="text-cyan-400 font-semibold">
-      {loadingPrice ? "Loading..." : formatFdv(fdv)}
-      {!loadingPrice && source && source !== "Dexscreener" ? <span className="text-sm text-slate-400 ml-2">(source: {source})</span> : null}
+{formatFdv(fdv)}
+      {source && source !== "Dexscreener" ? <span className="text-sm text-slate-400 ml-2">(source: {source})</span> : null}
     </span>
   ) : (
     <div className="text-left text-white mt-6">
       <h3 className="text-lg text-slate-400">
-        FDV: <span className="text-cyan-400 font-semibold">{loadingPrice ? "Loading..." : formatFdv(fdv)}</span>
+        FDV: <span className="text-cyan-400 font-semibold">{formatFdv(fdv)}</span>
       </h3>
       {source && source !== "Dexscreener" ? (
         <p className="text-sm text-slate-400 mt-1">Source: <span className="text-cyan-300 font-medium">{source}</span></p>

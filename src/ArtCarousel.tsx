@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ClickableImage from './components/ClickableImage';
 
 interface ArtCarouselProps {
   items: number[];
@@ -30,11 +31,11 @@ export function ArtCarousel({ items }: ArtCarouselProps) {
             key={num}
             className="flex-shrink-0 w-96 group/card relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover/card:from-cyan-500/5 group-hover/card:to-purple-500/5 rounded-2xl transition-all duration-500"></div>
-            <img
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover/card:from-cyan-500/5 group-hover/card:to-purple-500/5 rounded-2xl transition-all duration-500"></div>
+            <ClickableImage
               src={`/images/art${num}.png`}
               alt={`Art ${num}`}
-              className="relative w-full rounded-xl shadow-xl transform group-hover/card:scale-105 transition-transform duration-500 aspect-square object-cover"
+              className="relative w-full rounded-xl transform transition-transform duration-500 aspect-square object-cover"
             />
             <p className="relative text-gray-400 mt-4 text-center font-medium">Art #{num}</p>
           </div>
