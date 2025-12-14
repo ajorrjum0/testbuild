@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body, #root, html {
+    @apply bg-black text-white antialiased;
+    /* Enforce base color for all elements and preserve black background */
+    color: #ffffff;
+    background-color: #000 !important;
+    background-image: none !important;
+  }
+
+  * {
+    scroll-behavior: auto;
+  }
+
+  /* Force all elements (except page containers) to inherit body color and disable animations/transitions */
+  *:not(html):not(body):not(#root) {
+    color: inherit !important;
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transform: none !important;
+    filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    outline: none !important;
+  }
+
+  *:not(html):not(body):not(#root):hover,
+  *:not(html):not(body):not(#root):focus,
+  *:not(html):not(body):not(#root):active {
+    color: inherit !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    transform: none !important;
+  }
+
+  /* Neutralize group hover states that use variants such as group-hover: */
+  .group:hover *:not(html):not(body):not(#root), .group:focus *:not(html):not(body):not(#root), .group:active *:not(html):not(body):not(#root) {
+    transform: none !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+}
+
+@layer utilities {
+  /* Remove gradient animation utility to prevent dynamic backgrounds */
+  .animate-gradient {
+    animation: none !important;
+    background-image: none !important;
+  }
+
+  /* Neutralize pseudo-elements and SVGs */
+  *::before, *::after {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    content: none !important;
+  }
+
+  svg {
+    fill: currentColor !important;
+    stroke: currentColor !important;
+    background: transparent !important;
+  }
+
+  img {
+    -webkit-user-drag: none !important;
+    user-select: none !important;
+  }
+
+  a, button, input, textarea, select, label {
+    color: inherit !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    transition: none !important;
+    transform: none !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+}
